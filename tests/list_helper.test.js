@@ -18,21 +18,32 @@ describe("total likes", () => {
       url: "https://homepages.cwi.nl/~storm/teaching/reader/Dijkstra68.pdf",
       likes: 5,
       __v: 0,
-    }
-  ]
+    },
+  ];
 
-  test('when list has only one blog, equals the likes of that', () => {
-    const result = listHelper.totalLikes(listWithOneBlog)
-    assert.strictEqual(result, 5)
-  })
+  test("when list has only one blog, equals the likes of that", () => {
+    const result = listHelper.totalLikes(listWithOneBlog);
+    assert.strictEqual(result, 5);
+  });
 
-  test('of a bigger list is calculated right', () => {
+  test("of a bigger list is calculated right", () => {
     const result = listHelper.totalLikes([
-        { likes: 2 },
-        { likes: 5 },
-        { likes: 3 }
-    ])
-    assert.strictEqual(result, 10)
-  })
-})
+      { likes: 2 },
+      { likes: 5 },
+      { likes: 3 },
+    ]);
+    assert.strictEqual(result, 10);
+  });
+});  
 
+describe("favorite blog", () => {
+  test("return the blog with the most likes", () => {
+    const result = listHelper.favoriteBlog([
+      { likes: 2 },
+      { likes: 5 },
+      { likes: 3 },
+    ]);
+    assert.deepStrictEqual(result, { likes: 5 })
+    console.log("Result", result)
+  });
+});
